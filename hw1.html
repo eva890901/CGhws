@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+	overflow: hidden
+}
+#heading{
+	 position:absolute;
+	 text-align:center;
+	 width:100vw;
+}		
+
+</style>
+</head>
+
+<body>
+	<div id = 'heading'>
+		<a>HW1</a>
+		<br><br>
+		<button id='start'> Start </button>
+		<button id='add'> +10 </button>
+		<button id='reset'> Reset </button>
+		<br>
+		<p id='msg'></p>
+	</div>
+<script src="https://threejs.org/build/three.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<audio id="collisionsound" style="display:none">
+<source src="8773.wav" type='audio/wav'>
+</audio>
+<script>
+
+$('#start').click(function(){
+	click = ! click;
+	if(click){
+
+	   	$('#start').text('Pause');
+	   	clockOn = true;
+		setTimeout (countDown, 0);
+		reset = false;
+	}
+	else{
+		$('#start').text('Start');
+		clockOn = false;	
+
+	}
+});
+
+
+$('#add').click(function(){
+	if(reset){
+		counter += 10;
+		$('#msg').text (counter);
+		second.rotation.z -=  Math.PI*2/6;
+	}
+
+});
+
+$('#reset').click(function(){
+	reset = true;
+	clockOn = false;
+	counter = 0;
+	$('#msg').text (counter);
+	second.rotation.z = Math.PI;
+});
+
+
+var renderer, scene, camera;
+
+var click = false;
+let second = new THREE.Object3D();
+var clock = new THREE.Clock();
+var clockOn = false;
+var counter = 0;
+var reset = true;
+var collisionSound;
+init();
+animate();
+
+function init () {
+	
+	renderer = new THREE.WebGLRenderer();
+	document.body.appendChild (renderer.domElement);
+	var width = window.innerWidth;
+	var height = window.innerHeight;
+	renderer.setSize (width, height);
+	
+	renderer.setClearColor (0x888888);
+	
+	scene = new THREE.Scene();
+
+	
+	camera = new THREE.PerspectiveCamera (35, width/height, 1, 100);
+
+	camera.position.z = 35;
+	camera.lookAt (new THREE.Vector3(0,0,0));
+	
+	collisionSound = document.getElementById ('collisionsound');
+	//window.addEventListener('resize', onWindowResize, false);
+	///////////////////////////////////////////////////////////////
+
+	let loader = new THREE.TextureLoader()
+	loader.setCrossOrigin ("")
+	let map = loader.load ("https://i.imgur.com/zAPo1cR.png")
+	let geometry = new THREE.CircleGeometry( 8, 32 );
+	let material = new THREE.MeshBasicMaterial( {
+		map:map,
+		transparent:true
+		} );
+	let clock = new THREE.Mesh( geometry, material );
+	scene.add( clock );
+	
+	var mesh = new THREE.Mesh( new THREE.CircleGeometry( 4.5, 32, 0, 0.05 ), new THREE.MeshBasicMaterial( {color: 0x000000 } ) );
+	mesh.position.set(0.1, -4, 0);
+	mesh.rotation.z = Math.PI/2;
+	second.add(mesh);
+	second.position.set(-.2, 0.6, 0);
+	second.rotation.z = Math.PI;
+	scene.add( second );
+
+	let circleGeometry = new THREE.CircleGeometry( 0.2, 32 );
+	let circleMaterial = new THREE.MeshBasicMaterial( {color: 0x000000, transparent:true,
+		opacity:1 
+	} );
+	let circle = new THREE.Mesh( circleGeometry, circleMaterial );
+	circle.position.set(-0.2, 0.6, 0);
+	scene.add( circle );
+
+}
+
+function countDown() {
+	if (clockOn === false) {
+		return;
+	}
+	else{
+	setTimeout (countDown, 1000);
+		if(counter > 0){
+			setTimeout (count, 1000);
+		} 	
+	} 
+	$('#msg').text (counter);
+	--counter;
+	if (counter < 0){
+		clockOn = false;
+	}
+	if(counter<10)
+		collisionSound.play();
+  	
+}
+
+
+
+function animate() {
+	
+	requestAnimationFrame(animate);
+	render();
+
+}
+
+function count(){
+	second.rotation.z += Math.PI*2/60;
+	
+}
+
+
+function render() {
+	
+	renderer.render(scene, camera);
+	
+}
+
+</script>
+</body>
+
+</html>

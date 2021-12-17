@@ -54,7 +54,7 @@ export function makeFlame2(pos) {
 	// load a resource
 	loader.load(
 		// URL ...
-		'./M2tr5Tm.png',
+		'https://i.imgur.com/M2tr5Tm.png?1',
 		// onLoad ...
 		function(texture) {
 			// do something with the texture

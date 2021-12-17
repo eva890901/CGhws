@@ -13,7 +13,7 @@ class Candle{
 		
 		
 		let loader = new THREE.TextureLoader();
-		let texture = loader.load( 'flame.png');
+		let texture = loader.load( 'https://i.imgur.com/M2tr5Tm.png?1');
 		texture.wrapS = THREE.RepeatWrapping;
 		texture.wrapT = THREE.RepeatWrapping;
 		texture.repeat.set(1/3,1/3);

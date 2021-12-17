@@ -1,6 +1,6 @@
 import * as THREE from "https://threejs.org/build/three.module.js";
 import { OrbitControls } from "https://threejs.org/examples/jsm/controls/OrbitControls.js";
-import { Candle, makeFlame2 } from "./candle.js";
+import { Candle, makeFlame2 } from "https://eva890901.github.io/CGhws/candle.js";
 
 var camera, scene, renderer;
 var candles = [];
@@ -13,7 +13,7 @@ export function init() {
 	renderer = new THREE.WebGLRenderer({
 		antialias: true
 	});
-	renderer.setClearColor (0x888888);
+	renderer.setClearColor (0xffffff);
 	renderer.setSize(window.innerWidth, window.innerHeight);
 	document.body.appendChild(renderer.domElement);
 
@@ -24,12 +24,12 @@ export function init() {
 	let controls = new OrbitControls (camera, renderer.domElement);
 	////////////////////////////////////////////////////////////
 	
-	var plane = new THREE.Mesh(new THREE.PlaneGeometry( 120, 120 ), new THREE.MeshPhongMaterial({color: 0x0414f6, side: THREE.DoubleSide}));
+	var plane = new THREE.Mesh(new THREE.PlaneGeometry( 120, 120 ), new THREE.MeshPhongMaterial({color:0xffffff, side: THREE.DoubleSide}));
 	plane.rotation.x = Math.PI/2;
 	scene.add( plane );
 	
 	for(let i = 0;i<5;i++){
-		makeFlame2(new THREE.Vector3(Math.floor(Math.random()*100)-50, 0, Math.floor(Math.random()*100)-50));
+		makeFlame2(new THREE.Vector3(Math.floor(Math.random()*120)-50, 0, Math.floor(Math.random()*120)-50));
 	}
 	
 	window.addEventListener('resize', onWindowResize, false);

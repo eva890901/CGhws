@@ -1,5 +1,5 @@
 import * as THREE from "https://threejs.org/build/three.module.js";
-import { scene, candles, pickables } from "./main.js";
+import { scene, candles, pickables } from "https://eva890901.github.io/CGhws/main.js";
 
 export class Candle {
 	constructor(pos, flameMesh){
@@ -8,8 +8,8 @@ export class Candle {
 		this.mesh.position.copy(pos);
 		this.mesh.position.y = 10;
 		this.flameMesh = flameMesh;
-		this.light = new THREE.PointLight( 0xffffff, 1, 80 );
-		this.light.position.y = 18;
+		this.light = new THREE.PointLight( 0x888888, 1, 80 );
+		this.light.position.y = 20;
 		
 		this.count = 1;
 		this.mesh.picked = 0;

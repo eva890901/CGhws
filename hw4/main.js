@@ -34,12 +34,11 @@ function init() {
  
   candles.push(new Candle(0,0,"candle0","body0","flame0"));
   candles.push(new Candle(40,70,"candle1","body1","flame1"));
-  candles.push(new Candle(-100,-10,"candle2","body2","flame2"));
-  candles.push(new Candle(-60,90,"candle3","body3","flame3"));
-  candles.push(new Candle(110,-30,"candle4","body4","flame4"));
-  candles.push(new Candle(20,-100,"candle5","body5","flame5"));
+  candles.push(new Candle(-100,-40,"candle2","body2","flame2"));
+  candles.push(new Candle(-50,100,"candle3","body3","flame3"));
+  candles.push(new Candle(100,-40,"candle4","body4","flame4"));
   
-  for(let i = 0;i<6;i++){
+  for(let i = 0;i<5;i++){
 	  pickables.push(candles[i].candle);
   }
 	
@@ -81,9 +80,6 @@ function onDocumentMouseDown(event) {
     else if (intersects[0].object.name === "body4"||intersects[0].object.name === "flame4"){
     	candles[4].flameOff();
     } 
-	else if (intersects[0].object.name === "body5"||intersects[0].object.name === "flame5"){
-    	candles[5].flameOff();
-    } 
   }
 
 }
@@ -92,7 +88,7 @@ function animate() {
   requestAnimationFrame(animate);
   renderer.render(scene, camera);
   
-  for(let i = 0;i<6;i++){
+  for(let i = 0;i<5;i++){
 	   candles[i].candle.lookAt(camera.position.x,0,camera.position.z);
   }
   

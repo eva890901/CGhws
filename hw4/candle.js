@@ -2,13 +2,13 @@ import * as THREE from "https://threejs.org/build/three.module.js";
 import {scene} from './main.js';
 
 class Candle{
-	constructor(x,z,Can,b,flame){
+	constructor(x,z,Can,nam,flame){
 	
 		this.candle = new THREE.Object3D();
 		this.candle.name = Can;
 		this.body = new THREE.Mesh(new THREE.CylinderGeometry(5, 5, 20, 36), new THREE.MeshPhongMaterial({color: 'red',side: THREE.DoubleSide}));
 		this.body.position.y = 5;
-		this.body.name = b;
+		this.body.name = nam;
 		this.candle.add(this.body);
 		
 		

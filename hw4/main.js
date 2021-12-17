@@ -1,7 +1,7 @@
 import * as THREE from "https://threejs.org/build/three.module.js";
 import { OrbitControls } from "https://threejs.org/examples/jsm/controls/OrbitControls.js";
 
-import { Candle } from "./candle.js";
+import { Candle } from "./Candle.js";
 
 var camera, scene, renderer;
 var mouse = new THREE.Vector2();
@@ -13,7 +13,7 @@ function init() {
   renderer = new THREE.WebGLRenderer({
     antialias: true
   });
-  renderer.setClearColor(0xffffff);
+  renderer.setClearColor(0x000000);
   renderer.setSize(window.innerWidth, window.innerHeight);
   document.body.appendChild(renderer.domElement);
 

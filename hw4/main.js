@@ -1,7 +1,7 @@
 import * as THREE from "https://threejs.org/build/three.module.js";
 import { OrbitControls } from "https://threejs.org/examples/jsm/controls/OrbitControls.js";
 
-import { Candle } from "./Candle.js";
+import { Candle } from "./candle.js";
 
 var camera, scene, renderer;
 var mouse = new THREE.Vector2();

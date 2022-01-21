@@ -48,7 +48,7 @@ body {
     
     void main() {
         float intensity = dot (normalize (eyenormal), normalize (eyelightdir));         
-		if (intensity > 0.8)
+        if (intensity > 0.8)
         	intensity = 0.8;
         else if (intensity > 0.4)
          	intensity = 0.4;
@@ -67,8 +67,8 @@ body {
 
 import * as THREE from "https://threejs.org/build/three.module.js";
 import { OrbitControls } from "https://threejs.org/examples/jsm/controls/OrbitControls.js";
-import { TeapotGeometry } from "https://raw.githack.com/mrdoob/three.js/dev/examples/jsm/geometries/TeapotGeometry.js";
-//javascript:(function(){var script=document.createElement('script');script.onload=function(){var stats=new Stats();document.body.appendChild(stats.dom);requestAnimationFrame(function loop(){stats.update();requestAnimationFrame(loop)});};script.src='https://mrdoob.github.io/stats.js/build/stats.min.js';document.head.appendChild(script);})()
+import { TeapotGeometry } from "https://threejs.org/examples/jsm/geometries/TeapotGeometry.js";
+javascript:(function(){var script=document.createElement('script');script.onload=function(){var stats=new Stats();document.body.appendChild(stats.dom);requestAnimationFrame(function loop(){stats.update();requestAnimationFrame(loop)});};script.src='https://mrdoob.github.io/stats.js/build/stats.min.js';document.head.appendChild(script);})()
 
     
 
